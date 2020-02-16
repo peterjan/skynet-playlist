@@ -1,6 +1,7 @@
 var elemVideoInput;
 var elemTitleInput;
 var elemContainer;
+var elemOverlay;
 var btnGenerate;
 var btnReset;
 
@@ -19,7 +20,7 @@ onChangeInputTitle = (evt) => {
 
 uploadPlaylist = (evt) => {
     evt.preventDefault()
-
+    elemOverlay.style.display = 'block'
     // reset UI
     btnReset.click()
 
@@ -37,10 +38,12 @@ uploadPlaylist = (evt) => {
         .then((response) => response.json())
         .then((result) => {
             alert("Your playlist is at https://siasky.net/" + result.skylink);
+            elemOverlay.style.display = 'none'
         })
         .catch((error) => {
             console.error('Error:', error);
-        });
+            elemOverlay.style.display = 'none'
+        })
 }
 
 uploadVideo = (file) => {
@@ -102,6 +105,7 @@ window.addEventListener('DOMContentLoaded', () => {
     elemTitleInput = document.getElementById('input-title')
     elemContainer = document.getElementById('container')
     elemPlaylistTitle = document.getElementById('title');
+    elemOverlay = document.getElementById('overlay');
 
     elemVideoInput.onchange = onChangeInputVideo
     elemTitleInput.onkeyup = onChangeInputTitle
@@ -120,7 +124,7 @@ const playerHTML = `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">    
-*{box-sizing:border-box}body,html{margin:0;padding:0;background-color:#fff}body{height:100%;max-width:1200px;margin:0 auto;padding:20px;background-color:#eee}.sprite{background:url(https://siasky.net/rACTr_fQsX5uKWfjLNKQOW6PhcFm0G3zJIFACesDOB4PJA) no-repeat}.icon{display:inline-block;width:24px;height:24px;background:url(https://siasky.net/rACTr_fQsX5uKWfjLNKQOW6PhcFm0G3zJIFACesDOB4PJA) no-repeat;zoom:.9;-moz-transform:scale(.9);-moz-transform-origin:0 0}.step-backward{background-position:-40px -560px}.step-forward{background-position:-80px -560px}.play{background-position:-1040px -520px}.pause{background-position:-1000px -520px}.fullscreen{background-position:-80px -240}.line{display:block;margin-top:10px}td#timer{padding-left:20px}#container{margin-top:20px}#created{display:block;clear:both;padding-top:10px;text-align:right;color:#a9a9a9}#created a{color:#a9a9a9;padding-left:5px}#player{width:70%;height:70%;display:flex;float:left;position:relative;min-height:300px;justify-content:center;background-color:#333}#title{color:#fff;padding:0 20px}#video{background:#000;width:100%}#progressBar{height:5px;width:70%;display:flex;background:#fff;border-radius:30px;overflow:hidden}#progressBar>#progress{height:100%;width:0%;background:#00a8ff}#controls{position:absolute;bottom:0;width:100%;height:10%;max-height:40px;line-height:40px;bottom:0;color:#fff;opacity:7;background:#000;padding:0 10px}#playlist{width:30%;height:70%;float:right;min-height:300px;background:#000;border-left:1px solid #fff;overflow:hidden}#playlist table{display:block;padding:0;margin:0;border:none;overflow:scroll}#playlist table tbody{display:block;width:100%}#playlist table tr{display:block;padding:10px;height:60px;line-height:40px;color:#fff;font-size:14px}tr.video{cursor:pointer}#playlist table td{display:inline-block;height:40px;line-height:40px;font-size:14px}td.video-seq{width:10%;padding:0 10px}td.video-uploading .spinner{position:relative;top:0;width:10%}td.video-uploading .spinner div{width:27px;height:27px}td.video-name{width:50%;overflow:hidden;padding-left:10px}.playing::after{position:relative;top:3px;content:'';display:inline-block;line-height:60px;margin-left:10px;width:12px;height:12px;-moz-border-radius:7.5px;-webkit-border-radius:7.5px;border-radius:7.5px;background-color:#fff}.btn{cursor:pointer;width:20px}.spinner{display:inline-block;position:absolute;top:40%;width:64px;height:64px;z-index:100000}.spinner div{box-sizing:border-box;display:block;position:absolute;width:51px;height:51px;margin:6px;border:6px solid #fff;border-radius:50%;animation:spinner 1.2s cubic-bezier(.5,0,.5,1) infinite;border-color:#fff transparent transparent transparent}.spinner div:nth-child(1){animation-delay:-.45s}.spinner div:nth-child(2){animation-delay:-.3s}.spinner div:nth-child(3){animation-delay:-.15s}@keyframes spinner{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+*{box-sizing:border-box}body,html{margin:0;padding:0;background-color:#fff}body{height:100%;max-width:1200px;margin:0 auto;padding:20px;background-color:#eee}.sprite{background:url(https://siasky.net/rACTr_fQsX5uKWfjLNKQOW6PhcFm0G3zJIFACesDOB4PJA) no-repeat}.icon{display:inline-block;width:24px;height:24px;background:url(https://siasky.net/rACTr_fQsX5uKWfjLNKQOW6PhcFm0G3zJIFACesDOB4PJA) no-repeat;zoom:.9;-moz-transform:scale(.9);-moz-transform-origin:0 0}.step-backward{background-position:-40px -560px}.step-forward{background-position:-80px -560px}.play{background-position:-1040px -520px}.pause{background-position:-1000px -520px}.fullscreen{background-position:-80px -240}.line{display:block;margin-top:10px}#overlay{display:none;position:absolute;top:0;left:0;background:#000;width:100%;height:100%;z-index:9999;opacity:.85}#overlay .spinner{top:50%;left:50%;width:100px;height:100px}#overlay .spinner div{width:84px;height:84px}td#timer{padding-left:20px}#container{margin-top:20px}#created{display:block;clear:both;padding-top:10px;text-align:right;color:#a9a9a9}#created a{color:#a9a9a9;padding-left:5px}#player{width:70%;height:70%;display:flex;float:left;position:relative;min-height:300px;justify-content:center;background-color:#333}#title{color:#fff;padding:0 20px}#video{background:#000;width:100%}#progressBar{height:5px;width:70%;display:flex;background:#fff;border-radius:30px;overflow:hidden}#progressBar>#progress{height:100%;width:0%;background:#00a8ff}#controls{position:absolute;bottom:0;width:100%;height:10%;max-height:40px;line-height:40px;bottom:0;color:#fff;opacity:7;background:#000;padding:0 10px}#playlist{width:30%;height:70%;float:right;min-height:300px;background:#000;border-left:1px solid #fff;overflow:hidden}#playlist table{display:block;padding:0;margin:0;border:none;overflow:scroll}#playlist table tbody{display:block;width:100%}#playlist table tr{display:block;padding:10px;height:60px;line-height:40px;color:#fff;font-size:14px}tr.video{cursor:pointer}#playlist table td{display:inline-block;height:40px;line-height:40px;font-size:14px}td.video-seq{width:10%;padding:0 10px}td.video-uploading .spinner{position:relative;top:0;width:10%}td.video-uploading .spinner div{width:27px;height:27px}td.video-name{width:50%;overflow:hidden;padding-left:10px}.playing::after{position:relative;top:3px;content:'';display:inline-block;line-height:60px;margin-left:10px;width:12px;height:12px;-moz-border-radius:7.5px;-webkit-border-radius:7.5px;border-radius:7.5px;background-color:#fff}.btn{cursor:pointer;width:20px}.spinner{display:inline-block;position:absolute;top:40%;width:64px;height:64px;z-index:100000}.spinner div{box-sizing:border-box;display:block;position:absolute;width:51px;height:51px;margin:6px;border:6px solid #fff;border-radius:50%;animation:spinner 1.2s cubic-bezier(.5,0,.5,1) infinite;border-color:#fff transparent transparent transparent}.spinner div:nth-child(1){animation-delay:-.45s}.spinner div:nth-child(2){animation-delay:-.3s}.spinner div:nth-child(3){animation-delay:-.15s}@keyframes spinner{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
     </style>
 </head>
 
