@@ -70,12 +70,12 @@ onClickVideo = (evt) => {
 onClickPlay = (evt) => {
     evt.preventDefault();
     if (elemVideo.paused || elemVideo.ended) {
-        btnPlay.childNodes[0].setAttribute("class", "fas fa-pause");
+        btnPlay.childNodes[0].setAttribute("class", "icon pause");
         elemVideo.play();
         return
     }
     elemVideo.pause();
-    btnPlay.childNodes[0].setAttribute("class", "fas fa-play");
+    btnPlay.childNodes[0].setAttribute("class", "icon play");
 }
 
 onClickPrev = (evt) => {
