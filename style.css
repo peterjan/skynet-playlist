@@ -15,11 +15,6 @@ body {
     background-color: #eee
 }
 
-.sprite {
-    /* icon size 24 + spacing 16 */
-    background: url("https://siasky.net/rACTr_fQsX5uKWfjLNKQOW6PhcFm0G3zJIFACesDOB4PJA") no-repeat;
-}
-
 .icon {
     display: inline-block;
     width: 24px;
