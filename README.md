@@ -2,7 +2,7 @@
 Build your video playlist and share it
 
 ## Skynet Dapp URL
-https://siasky.net/vADu8cjAiHknBTIkVWHV3eyGkLS0isLID1nkhjCgpRkaDg
+https://siasky.net/nAAJroJW0Z7cYcpev1VVjJXXGU1WF8YQ8eUs8dJHTDEXqQ
 
 ## Demo Video
 https://siasky.net/AACh0SDbRqPJEhgxqP-bzmU1YhRcI29AZo4G0u-xcmuJWg

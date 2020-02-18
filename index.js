@@ -31,7 +31,8 @@ uploadPlaylist = (evt) => {
     var blob = new Blob([html], { type: 'text/html' });
     var formData = new FormData();
     formData.append('file', blob);
-    fetch('https://siasky.net/api/skyfile?filename=playlist.html', {
+    const uuid = generateUUID()
+    fetch(`https://siasky.net/skynet/skyfile/${uuid}?filename=playlist.html`, {
         method: 'POST',
         body: formData
     })
@@ -49,7 +50,8 @@ uploadPlaylist = (evt) => {
 uploadVideo = (file) => {
     var formData = new FormData();
     formData.append('file', file);
-    fetch('https://siasky.net/api/skyfile?filename=' + file.name, {
+    const uuid = generateUUID()
+    fetch(`https://siasky.net/skynet/skyfile/${uuid}?filename=${file.name}`, {
         method: 'POST',
         body: formData
     })
@@ -61,6 +63,15 @@ uploadVideo = (file) => {
         .catch((error) => {
             console.error('Error:', error);
         });
+}
+
+generateUUID = () => {
+    let uuid = ''
+    const cs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < 16; i++) {
+        uuid += cs.charAt(Math.floor(Math.random() * cs.length));
+    }
+    return uuid;
 }
 
 addUploadingEntryToPlaylist = (name) => {
