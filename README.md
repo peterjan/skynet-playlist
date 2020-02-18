@@ -5,7 +5,7 @@ Build your video playlist and share it
 https://siasky.net/nAAJroJW0Z7cYcpev1VVjJXXGU1WF8YQ8eUs8dJHTDEXqQ
 
 ## Demo Video
-https://siasky.net/AACh0SDbRqPJEhgxqP-bzmU1YhRcI29AZo4G0u-xcmuJWg
+https://siasky.net/AABSR21FcA-YmenaD-NvOb727LrVDAsEw_Bz1r4HxglcIQ
 
 ## Build the HTML
 In order to build the html you can use the npm package `inliner`.
