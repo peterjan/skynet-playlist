@@ -1,5 +1,5 @@
 # skynet-playlist
-Build your video playlist and share it
+Build your video playlist and share it.
 
 ## Skynet Dapp URL
 https://siasky.net/nAAJroJW0Z7cYcpev1VVjJXXGU1WF8YQ8eUs8dJHTDEXqQ
